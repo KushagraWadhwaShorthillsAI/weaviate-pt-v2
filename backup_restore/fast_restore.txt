@@ -1,0 +1,50 @@
+# Session 1: SongLyrics
+tmux new -d -s restore-1
+tmux send-keys -t restore-1 "cd ~/weaviatePt/weaviate-pt/backup_restore && python3 restore_v4.py" C-m
+
+# Session 2: SongLyrics_10k
+tmux new -d -s restore-2
+tmux send-keys -t restore-2 "cd ~/weaviatePt/weaviate-pt/backup_restore && python3 restore_v4.py" C-m
+
+# Session 3: SongLyrics_12k
+tmux new -d -s restore-3
+tmux send-keys -t restore-3 "cd ~/weaviatePt/weaviate-pt/backup_restore && python3 restore_v4.py" C-m
+
+# Session 4: SongLyrics_15k
+tmux new -d -s restore-4
+tmux send-keys -t restore-4 "cd ~/weaviatePt/weaviate-pt/backup_restore && python3 restore_v4.py" C-m
+
+# Session 5: SongLyrics_200k
+tmux new -d -s restore-5
+tmux send-keys -t restore-5 "cd ~/weaviatePt/weaviate-pt/backup_restore && python3 restore_v4.py" C-m
+
+# Session 6: SongLyrics_20k
+tmux new -d -s restore-6
+tmux send-keys -t restore-6 "cd ~/weaviatePt/weaviate-pt/backup_restore && python3 restore_v4.py" C-m
+
+# Session 7: SongLyrics_30k
+tmux new -d -s restore-7
+tmux send-keys -t restore-7 "cd ~/weaviatePt/weaviate-pt/backup_restore && python3 restore_v4.py" C-m
+
+# Session 8: SongLyrics_400k
+tmux new -d -s restore-8
+tmux send-keys -t restore-8 "cd ~/weaviatePt/weaviate-pt/backup_restore && python3 restore_v4.py" C-m
+
+# Session 9: SongLyrics_50k
+tmux new -d -s restore-9
+tmux send-keys -t restore-9 "cd ~/weaviatePt/weaviate-pt/backup_restore && python3 restore_v4.py" C-m
+
+
+# Manually attach to each and answer:
+tmux attach -t restore-1  # Select: 1, yes, Ctrl+b d
+tmux attach -t restore-2  # Select: 2, yes, Ctrl+b d
+tmux attach -t restore-3  # Select: 3, yes, Ctrl+b d
+tmux attach -t restore-4  # Select: 4, yes, Ctrl+b d
+tmux attach -t restore-5  # Select: 5, yes, Ctrl+b d
+tmux attach -t restore-6  # Select: 6, yes, Ctrl+b d
+tmux attach -t restore-7  # Select: 7, yes, Ctrl+b d
+tmux attach -t restore-8  # Select: 8, yes, Ctrl+b d
+tmux attach -t restore-9  # Select: 9, yes, Ctrl+b d
+
+
+tmux ls 
