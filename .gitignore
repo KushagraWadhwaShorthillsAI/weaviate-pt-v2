@@ -27,7 +27,6 @@ performance_testing/embeddings_cache.json
 performance_testing/parallel_testing/queries/
 
 # Configuration with credentials (DO NOT COMMIT)
-config.example.py
 config.py
 
 # Data files (large files that should not be in git)
@@ -55,3 +54,14 @@ multi_collection_report.html
 single_collection_report.html
 multi_collection_reports/
 single_collection_reports/
+
+# Performance testing reports (generated files, should not be committed)
+performance_testing/reports/
+
+# Environment and log files
+.env
+*.log
+performance_testing/api/fastapi_weaviate.log
+
+# Dumped data files
+performance_testing/multi_collection/dumped_query_data.json
