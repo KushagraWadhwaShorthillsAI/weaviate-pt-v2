@@ -1,0 +1,224 @@
+{
+	"info": {
+		"_postman_id": "weaviate-fastapi-collection",
+		"name": "Weaviate FastAPI - Query Text Lookup",
+		"description": "Postman collection for Weaviate FastAPI endpoints. Use the lookup endpoint to search by query_text only.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GraphQL Sync - Query Text Lookup",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"query_text\": \"love and heartbreak\",\n    \"query_file\": \"queries_hybrid_09_200.json\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/graphql/lookup",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"graphql",
+						"lookup"
+					]
+				},
+				"description": "Sync GraphQL endpoint with query_text lookup.\n\nThis endpoint:\n1. Accepts only query_text (and optional query_file)\n2. Looks up the full query_data from the queries file\n3. Extracts the GraphQL query from query_data\n4. Forwards the GraphQL query to Weaviate (single request to all collections)\n5. Returns the Weaviate response directly\n\nExample query_text values:\n- \"love and heartbreak\"\n- \"summer party vibes\"\n- \"feeling alone tonight\"\n- \"dance all night long\""
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Async - Query Text Lookup",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"query_text\": \"love and heartbreak\",\n    \"query_file\": \"queries_hybrid_09_200.json\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/graphql/async/lookup",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"graphql",
+						"async",
+						"lookup"
+					]
+				},
+				"description": "Async endpoint with query_text lookup.\n\nThis endpoint:\n1. Accepts only query_text (and optional query_file)\n2. Looks up the full query_data from the queries file\n3. Extracts limit, vector, alpha from query_data\n4. Executes parallel searches across 9 collections\n5. Returns aggregated results\n\nExample query_text values:\n- \"love and heartbreak\"\n- \"summer party vibes\"\n- \"feeling alone tonight\"\n- \"dance all night long\""
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL - Direct (with GraphQL query)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"query\": \"{ Get { SongLyrics(hybrid: { query: \\\"love and heartbreak\\\" alpha: 0.9 }) { title artist } } }\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/graphql",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"graphql"
+					]
+				},
+				"description": "Direct GraphQL endpoint - requires full GraphQL query string"
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Async - Direct (with all params)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"query_text\": \"love and heartbreak\",\n    \"limit\": 200,\n    \"alpha\": 0.9\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/graphql/async",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"graphql",
+						"async"
+					]
+				},
+				"description": "Direct async endpoint - requires all parameters (query_text, limit, alpha, optional vector)"
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL Async - BM25 Search",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"query_text\": \"love and heartbreak\",\n    \"limit\": 200\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/graphql/async",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"graphql",
+						"async"
+					]
+				},
+				"description": "BM25 search (keyword-only) - omit alpha or set alpha=0"
+			},
+			"response": []
+		},
+		{
+			"name": "Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/health",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"health"
+					]
+				},
+				"description": "Check if the API is healthy"
+			},
+			"response": []
+		},
+		{
+			"name": "API Info",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						""
+					]
+				},
+				"description": "Get API information and available endpoints"
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "https://weaviate-pt-test.shorthills.ai",
+			"type": "string"
+		}
+	]
+}
+
