@@ -1,0 +1,72 @@
+"""
+Configuration file template for CSV processing and Weaviate indexing
+Copy this file to config.py and modify the values according to your setup
+"""
+
+# CSV Configuration
+CSV_FILE_PATH = "song_lyrics.csv"
+CHUNK_SIZE = 10000  # Read 10k rows at a time
+BATCH_SIZE = 50     # Process 10 rows at a time
+MAX_ROWS_TO_PROCESS = 1004000  # Process only first 2 million rows (set to None for all rows)
+
+# OpenAI Configuration
+# Set to True if using Azure OpenAI, False for regular OpenAI
+USE_AZURE_OPENAI = True
+
+# Azure OpenAI Configuration (if USE_AZURE_OPENAI = True)
+AZURE_OPENAI_API_KEY = "your-azure-openai-api-key"
+AZURE_OPENAI_ENDPOINT = "https://your-resource.openai.azure.com/"
+AZURE_OPENAI_API_VERSION = "2024-02-01"  # API version
+AZURE_OPENAI_DEPLOYMENT_NAME = "text-embedding-3-large"  # Your deployment name
+
+# Regular OpenAI Configuration (if USE_AZURE_OPENAI = False)
+OPENAI_API_KEY = "sk-your-openai-api-key"
+OPENAI_MODEL = "text-embedding-3-large"
+
+# Common OpenAI Settings
+OPENAI_MAX_RETRIES = 1
+OPENAI_TIMEOUT = 60
+
+# Weaviate Configuration
+WEAVIATE_URL = "http://your-weaviate-instance:8080"  # Replace with your Weaviate instance URL
+WEAVIATE_API_KEY = "your-weaviate-api-key"  # Replace if authentication is enabled
+WEAVIATE_CLASS_NAME = "SongLyrics"
+WEAVIATE_USE_GRPC = False  # Set to False if gRPC is not available (HTTP-only mode)
+
+# FastAPI Configuration
+FASTAPI_URL = "http://localhost:8000"  # FastAPI server URL for performance testing
+
+# Processing Configuration
+MAX_CONCURRENT_EMBEDDINGS = 50  # Number of concurrent embedding requests
+CHECKPOINT_FILE = "processing_checkpoint.json"
+BATCH_INSERT_DELAY = 0.1  # Delay in seconds between batch inserts (prevents server overload)
+
+# Collection Copying Configuration
+COPY_BATCH_SIZE = 2000  # Batch size for copying collections (50=slower/safer, 100=balanced, 500=faster)
+
+
+# Azure Blob Storage Configuration (for backups)
+AZURE_BLOB_CONNECTION_STRING = "your-azure-blob-connection-string"  # Get from Azure Portal → Storage Account → Access keys
+AZURE_BLOB_CONTAINER_NAME = "weaviate-backups"  # Container name for backups
+BACKUP_BATCH_SIZE = 5000  # Objects per backup file (1000=balanced, 500=smaller files, 2000=larger files)
+BACKUP_MAX_PARALLEL = 5  # Concurrent blob uploads (5=balanced, 10=faster if bandwidth allows)
+
+# Logging Configuration
+LOG_FILE = "processing_log.log"
+LOG_LEVEL = "INFO"
+
+# CSV Columns (metadata fields)
+CSV_COLUMNS = [
+    "title",
+    "tag",
+    "artist",
+    "year",
+    "views",
+    "features",
+    "lyrics",
+    "id",
+    "language_cld3",
+    "language_ft",
+    "language"
+]
+

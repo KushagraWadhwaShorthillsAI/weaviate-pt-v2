@@ -1,0 +1,67 @@
+# Virtual Environment
+ptVenv/
+venv/
+ptVenv/
+env/
+ENV/
+.venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Processing files
+processing_checkpoint.json
+processing_log.log
+processing_errors.jsonl
+failed_ids.txt
+
+# Performance testing query files (large, can be regenerated)
+performance_testing/multi_collection/queries/
+performance_testing/single_collection/queries/
+performance_testing/parallel_testing/queries/
+performance_testing/embeddings_cache.json
+performance_testing/parallel_testing/queries/
+
+# Configuration with credentials (DO NOT COMMIT)
+config.py
+
+# Data files (large files that should not be in git)
+# *.csv
+*.zip
+song_lyrics.csv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+#*.html
+
+oldReports
+test_venv/
+
+backup_restore/SongLyrics*
+multi_collection_report.html
+single_collection_report.html
+multi_collection_reports/
+single_collection_reports/
+
+# Performance testing reports (generated files, should not be committed)
+performance_testing/reports/
+
+# Environment and log files
+.env
+*.log
+performance_testing/api/fastapi_weaviate.log
+
+# Dumped data files
+performance_testing/multi_collection/dumped_query_data.json
